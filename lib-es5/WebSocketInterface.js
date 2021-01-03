@@ -12,6 +12,8 @@ var debug = require('debug')('JsSIP:WebSocketInterface');
 
 var debugerror = require('debug')('JsSIP:ERROR:WebSocketInterface');
 
+var WebSocket = require('websocket').w3cwebsocket;
+
 debugerror.log = console.warn.bind(console);
 
 module.exports = /*#__PURE__*/function () {
