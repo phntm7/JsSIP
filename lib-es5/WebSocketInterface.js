@@ -59,7 +59,11 @@ module.exports = /*#__PURE__*/function () {
       debug("connecting to WebSocket ".concat(this._url));
 
       try {
-        this._ws = new WebSocket(this._url, 'sip');
+        this._ws = new WebSocket(this._url, 'sip', null, null, null, {
+          tlsOptions: {
+            rejectUnauthorized: false
+          }
+        });
         this._ws.binaryType = 'arraybuffer';
         this._ws.onopen = this._onOpen.bind(this);
         this._ws.onclose = this._onClose.bind(this);
