@@ -4,8 +4,9 @@ import * as C from './Constants'
 import * as Exceptions from './Exceptions'
 import * as Grammar from './Grammar'
 import * as Utils from './Utils'
+import * as RTCSession from './RTCSession'
 
-export { C, Exceptions, Grammar, Utils };
+export { C, Exceptions, Grammar, Utils, RTCSession };
 
 export {UA} from './UA'
 export {URI} from './URI'
