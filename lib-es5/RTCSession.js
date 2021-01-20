@@ -35,6 +35,10 @@ var sdp_transform = require('sdp-transform');
 
 var RTCPeerConnection = require('wrtc').RTCPeerConnection;
 
+var RTCSessionDescription = require('wrtc').RTCSessionDescription;
+
+var MediaStream = require('wrtc').MediaStream;
+
 var JsSIP_C = require('./Constants');
 
 var Exceptions = require('./Exceptions');
@@ -603,21 +607,6 @@ module.exports = /*#__PURE__*/function (_EventEmitter) {
         } // Audio and/or video requested, prompt getUserMedia.
         else if (mediaConstraints.audio || mediaConstraints.video) {
             _this3._localMediaStreamLocallyGenerated = true;
-            return navigator.mediaDevices.getUserMedia(mediaConstraints)["catch"](function (error) {
-              if (_this3._status === C.STATUS_TERMINATED) {
-                throw new Error('terminated');
-              }
-
-              request.reply(480);
-
-              _this3._failed('local', null, JsSIP_C.causes.USER_DENIED_MEDIA_ACCESS);
-
-              debugerror('emit "getusermediafailed" [error:%o]', error);
-
-              _this3.emit('getusermediafailed', error);
-
-              throw new Error('getUserMedia() failed');
-            });
           }
       }) // Attach MediaStream to RTCPeerconnection.
       .then(function (stream) {
@@ -2281,19 +2270,6 @@ module.exports = /*#__PURE__*/function (_EventEmitter) {
         } // Request for user media access.
         else if (mediaConstraints.audio || mediaConstraints.video) {
             _this21._localMediaStreamLocallyGenerated = true;
-            return navigator.mediaDevices.getUserMedia(mediaConstraints)["catch"](function (error) {
-              if (_this21._status === C.STATUS_TERMINATED) {
-                throw new Error('terminated');
-              }
-
-              _this21._failed('local', null, JsSIP_C.causes.USER_DENIED_MEDIA_ACCESS);
-
-              debugerror('emit "getusermediafailed" [error:%o]', error);
-
-              _this21.emit('getusermediafailed', error);
-
-              throw error;
-            });
           }
       }).then(function (stream) {
         if (_this21._status === C.STATUS_TERMINATED) {
