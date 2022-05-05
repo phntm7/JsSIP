@@ -54,7 +54,7 @@ var debug = require('debug')('JsSIP:UA');
 
 var debugerror = require('debug')('JsSIP:ERROR:UA');
 
-var RTCPeerConnection = require('wrtc').RTCPeerConnection;
+var RTCPeerConnection = require('@koush/wrtc').RTCPeerConnection;
 
 var window = {
   RTCPeerConnection: RTCPeerConnection

@@ -33,11 +33,11 @@ var EventEmitter = require('events').EventEmitter;
 
 var sdp_transform = require('sdp-transform');
 
-var RTCPeerConnection = require('wrtc').RTCPeerConnection;
+var RTCPeerConnection = require('@koush/wrtc').RTCPeerConnection;
 
-var RTCSessionDescription = require('wrtc').RTCSessionDescription;
+var RTCSessionDescription = require('@koush/wrtc').RTCSessionDescription;
 
-var MediaStream = require('wrtc').MediaStream;
+var MediaStream = require('@koush/wrtc').MediaStream;
 
 var JsSIP_C = require('./Constants');
 
