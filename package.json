@@ -33,7 +33,7 @@
     "events": "^3.3.0",
     "sdp-transform": "^2.14.1",
     "websocket": "^1.0.33",
-    "wrtc": "^0.4.6"
+    "@koush/wrtc": "^0.5.3"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
