@@ -1,12 +1,10 @@
 "use strict";
 
+var Logger = require('./Logger');
 var Utils = require('./Utils');
-
 var Grammar = require('./Grammar');
+var logger = new Logger('Socket');
 
-var debugerror = require('debug')('JsSIP:ERROR:Socket');
-
-debugerror.log = console.warn.bind(console);
 /**
  * Interface documentation: https://jssip.net/documentation/$last_version/api/socket/
  *
@@ -31,43 +29,39 @@ exports.isSocket = function (socket) {
   if (Array.isArray(socket)) {
     return false;
   }
-
   if (typeof socket === 'undefined') {
-    debugerror('undefined JsSIP.Socket instance');
+    logger.warn('undefined JsSIP.Socket instance');
     return false;
-  } // Check Properties.
+  }
 
-
+  // Check Properties.
   try {
     if (!Utils.isString(socket.url)) {
-      debugerror('missing or invalid JsSIP.Socket url property');
-      throw new Error();
+      logger.warn('missing or invalid JsSIP.Socket url property');
+      throw new Error('Missing or invalid JsSIP.Socket url property');
     }
-
     if (!Utils.isString(socket.via_transport)) {
-      debugerror('missing or invalid JsSIP.Socket via_transport property');
-      throw new Error();
+      logger.warn('missing or invalid JsSIP.Socket via_transport property');
+      throw new Error('Missing or invalid JsSIP.Socket via_transport property');
     }
-
     if (Grammar.parse(socket.sip_uri, 'SIP_URI') === -1) {
-      debugerror('missing or invalid JsSIP.Socket sip_uri property');
-      throw new Error();
+      logger.warn('missing or invalid JsSIP.Socket sip_uri property');
+      throw new Error('missing or invalid JsSIP.Socket sip_uri property');
     }
   } catch (e) {
     return false;
-  } // Check Methods.
+  }
 
-
+  // Check Methods.
   try {
     ['connect', 'disconnect', 'send'].forEach(function (method) {
       if (!Utils.isFunction(socket[method])) {
-        debugerror("missing or invalid JsSIP.Socket method: ".concat(method));
-        throw new Error();
+        logger.warn("missing or invalid JsSIP.Socket method: ".concat(method));
+        throw new Error("Missing or invalid JsSIP.Socket method: ".concat(method));
       }
     });
   } catch (e) {
     return false;
   }
-
   return true;
 };

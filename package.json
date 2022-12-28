@@ -27,13 +27,13 @@
     "url": "https://github.com/versatica/JsSIP/issues"
   },
   "dependencies": {
-    "@types/events": "^3.0.0",
+    "@koush/wrtc": "^0.5.3",
     "@types/debug": "^4.1.7",
+    "@types/events": "^3.0.0",
     "debug": "^4.3.1",
     "events": "^3.3.0",
     "sdp-transform": "^2.14.1",
-    "websocket": "^1.0.33",
-    "wrtc": "^0.4.6"
+    "websocket": "^1.0.33"
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",

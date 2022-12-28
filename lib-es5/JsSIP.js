@@ -1,30 +1,21 @@
 "use strict";
 
 var pkg = require('../package.json');
-
 var C = require('./Constants');
-
 var Exceptions = require('./Exceptions');
-
 var Utils = require('./Utils');
-
 var UA = require('./UA');
-
 var URI = require('./URI');
-
+var RTCSession = require('./RTCSession');
 var NameAddrHeader = require('./NameAddrHeader');
-
 var Grammar = require('./Grammar');
-
 var WebSocketInterface = require('./WebSocketInterface');
-
 var debug = require('debug')('JsSIP');
-
 debug('version %s', pkg.version);
+
 /**
  * Expose the JsSIP module.
  */
-
 module.exports = {
   C: C,
   Exceptions: Exceptions,
@@ -34,15 +25,13 @@ module.exports = {
   NameAddrHeader: NameAddrHeader,
   WebSocketInterface: WebSocketInterface,
   Grammar: Grammar,
+  RTCSession: RTCSession,
   // Expose the debug module.
   debug: require('debug'),
-
   get name() {
     return pkg.title;
   },
-
   get version() {
     return pkg.version;
   }
-
 };
