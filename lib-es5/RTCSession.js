@@ -37,7 +37,7 @@ var RTCSession_Info = require('./RTCSession/Info');
 var RTCSession_ReferNotifier = require('./RTCSession/ReferNotifier');
 var RTCSession_ReferSubscriber = require('./RTCSession/ReferSubscriber');
 var URI = require('./URI');
-logger = new Logger('RTCSession');
+var logger = new Logger('RTCSession');
 var window = {
   RTCPeerConnection: RTCPeerConnection
 };
